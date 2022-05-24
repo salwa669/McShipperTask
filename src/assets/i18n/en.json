@@ -1,0 +1,45 @@
+{
+    "shipper_name":"shipper_name",
+    "shipper_phone":"shipper_phone",
+    "Address":"Address",
+    "Street":"Street",
+    "PostalCode":"PostalCode",
+    "City":"City",
+    "Date":"Date",
+    "commodities":"commodities",
+    "Food":"Food",
+    "electrical":"electrical",
+    "consumer":"consumer",
+    "catering":"catering",
+    "industrial":"industrial",
+    "productive":"productive",
+    "Next":"Next",
+    "Bill Shippment":"Bill Shippment",
+    "Place Shippment":"Place Shippment",
+    "SignUp":"SignUp",
+    "Sign In":"Sign In",
+    "Name":"Name",
+    "Email":"Email",
+    "Password":"Password",
+    "Confirm Password":"Confirm Password",
+    "Already have Account? Sign in Now":"Already have Account? Sign in Now",
+    "Dont have Account? Sign up Now":"Dont have Account? Sign up Now",
+    "Shipment":"Shipment",
+    "Home":"Home",
+    "login":"login",
+    "Register":"Register",
+    "NewShipment":"New Shipment",
+    "Logout":"Logout",
+    "EN":"EN",
+    "AR":"AR"
+
+    
+    
+
+
+
+
+
+    
+   
+}

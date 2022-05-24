@@ -1,0 +1,45 @@
+<form [formGroup]="LoginForm" class="form-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title class="colors fs-3">{{"Sign In"|translate}}</mat-card-title>
+      
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" hideRequiredMarker >
+                <mat-label class="labelcolor fs-6">{{"Email"|translate}}</mat-label>
+              <input type="email" formControlName="email"  [class.is-invalid]="email.invalid && email.touched" [class.is-valid]="email.valid" matInput placeholder="Enter Your Email">
+            </mat-form-field>
+            <div *ngIf="!email.valid && email.touched" class="text-danger">
+               
+              <small class="text-danger fs-6 fw-bold"
+              *ngIf="LoginForm.get('email')?.hasError('required')">
+              The Email is required.
+             </small>
+             <small class="text-danger fs-6 fw-bold"
+             *ngIf="LoginForm.get('email')?.hasError('email')">
+             You Must Enter a Vaild Email like dawd1222@g****.com
+            </small>
+          </div>
+          </div>
+          
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+              <mat-form-field class="full-width" hideRequiredMarker>
+                <mat-label class="labelcolor fs-6">{{"Password"|translate}}</mat-label>
+                <input type="password" formControlName="password" [class.is-invaild]="password.invalid && password.touched" [class.is-valid]="password.valid"  matInput placeholder="Enter Your password">
+              </mat-form-field>
+              <div *ngIf="!password.valid && password.touched" class="text-danger fs-6 fw-bold">
+                The Password is Required
+              </div>
+            </div>
+        </div>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button [disabled]="LoginForm.invalid" (click)="saveForm()" mat-raised-button color="white">{{"Sign In"|translate}}</button><a class="nav-link text-white-50 fs-6" routerLink="/signup" routerLinkActive="active" >{{"Dont have Account? Sign up Now" | translate}}</a>
+      </mat-card-actions>
+    </mat-card>
+  </form>

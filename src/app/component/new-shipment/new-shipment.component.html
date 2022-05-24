@@ -1,0 +1,134 @@
+
+<mat-horizontal-stepper class="step" labelPosition="bottom">
+    <mat-step label="PickupPoints" [stepControl]="Pickuppoints">
+        <form [formGroup]="Pickuppoints">
+            <mat-form-field class="full-width" hideRequiredMarker>
+                <mat-label class="fs-6" >{{"shipper_name" | translate}}</mat-label>
+              <input formControlName="shipper_name" matInput placeholder="Enter Your Name"   [class.is-invalid]="shipper_name.invalid && shipper_name.touched" [class.is-valid]="shipper_name.valid">
+            </mat-form-field>
+            <div *ngIf="!shipper_name.valid && shipper_name.touched" class="text-danger">
+               
+                <small class="text-danger fs-6 fw-bold"
+                *ngIf="Pickuppoints.get('shipper_name')?.hasError('required')">
+                The Name is required.
+               </small>
+               <small class="text-danger fs-6 fw-bold"
+               *ngIf="Pickuppoints.get('shipper_name')?.hasError('minlength')">
+               The minimum length for this field is 5 characters.
+              </small>
+             
+            </div>
+            <br>
+            <mat-form-field class="full-width" hideRequiredMarker>
+                <mat-label class="fs-6">{{"shipper_phone"|translate}}</mat-label>
+              <input formControlName="shipper_phone" matInput placeholder="Enter Your Name"   [class.is-invalid]="shipper_phone.invalid && shipper_phone.touched" [class.is-valid]="shipper_phone.valid">
+            </mat-form-field>
+            <div *ngIf="!shipper_phone.valid && shipper_phone.touched" class="text-danger">
+               
+                <small class="text-danger fs-6 fw-bold"
+                *ngIf="Pickuppoints.get('shipper_phone')?.hasError('required')">
+                The Phone number is required.
+               </small>
+               <small class="text-danger fs-6 fw-bold"
+               *ngIf="Pickuppoints.get('shipper_phone')?.hasError('pattern')">
+               phone number must be 11 characters
+              </small>
+             
+            </div>
+            <br>
+            <br>
+            <div formGroupName="address">
+                <label>{{"Address"| translate}}</label>
+                <div class="mb-3">
+                    <mat-form-field class="full-width" hideRequiredMarker>
+                        <mat-label class="fs-6">{{"Street"|translate}}</mat-label>
+                      <input formControlName="street" matInput placeholder="Enter Your street">
+                    </mat-form-field>
+                 
+                </div>
+            
+                <div class="mb-3">
+                    <mat-form-field class="full-width" hideRequiredMarker>
+                        <mat-label class="fs-6">{{"PostalCode"|translate}}</mat-label>
+                      <input formControlName="postalCode" matInput placeholder="Enter the zipcode">
+                    </mat-form-field>
+                  
+                </div>
+            
+                <div class="mb-3">
+                    <mat-form-field class="full-width" hideRequiredMarker>
+                        <mat-label class="fs-6">{{"City"|translate}}</mat-label>
+                      <input formControlName="city" matInput placeholder="Enter Your City">
+                    </mat-form-field>
+                 
+                </div>
+              </div>
+            <div *ngIf="!address.valid && address.touched" class="text-danger">
+               
+                <small class="text-danger fs-6 fw-bold"
+                *ngIf="Pickuppoints.get('address')?.hasError('required')">
+                The Address is required.
+               </small>
+              
+             
+            </div>
+            <br>
+            <mat-form-field hideRequiredMarker>
+                <label class="fs-6">{{"Date"|translate}}</label>
+                <input matInput [matDatepicker]="myDatePicker" [min]="mindate" [max]="maxdate">
+                <mat-datepicker-toggle [for]="myDatePicker" matSuffix ></mat-datepicker-toggle>
+                <mat-datepicker #myDatePicker></mat-datepicker>
+               
+              </mat-form-field>
+              <div *ngIf="!pickup_date.valid && pickup_date.touched" class="text-danger fs-6 fw-bold">
+                  Date is Required
+              </div>
+             <br>
+         
+            <mat-form-field hideRequiredMarker>
+                <mat-label class="fs-6">{{"commodities"|translate}}</mat-label>
+                <mat-select>
+                    <mat-option value="Food">{{"Food"| translate}}</mat-option>
+                    <mat-option value="electrical">{{"electrical"|translate}}</mat-option>
+                    <mat-option value="consumer">{{"consumer"|translate}}</mat-option>
+                    <mat-option value="catering">{{"catering"|translate}}</mat-option>
+                    <mat-option value="industrial">{{"industrial"|translate}}</mat-option>
+                    <mat-option value="productive">{{"productive"|translate}}</mat-option>
+                  
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <br>
+
+            <button mat-raised-button  matStepperNext>{{"Next"|translate}}</button>
+        </form>
+        <!-- completed="false" -->
+      
+    </mat-step>
+    <mat-step label="BillShippment" [stepControl]="BillShippment" optional>
+        <p>{{"Bill Shippment"|translate}}</p>
+        <form [formGroup]="BillShippment">
+            <mat-form-field class="full-width" hideRequiredMarker>
+                <mat-label class="fs-6">OrderAmount</mat-label>
+              <input formControlName="OrderAmount" matInput placeholder="Enter Your Name"   [class.is-invalid]="OrderAmount.invalid && OrderAmount.touched" [class.is-valid]="OrderAmount.valid">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="full-width" hideRequiredMarker>
+                <mat-label class="fs-6">totalPrice</mat-label>
+              <input formControlName="totalPrice" matInput placeholder="Enter Your Name"   [class.is-invalid]="totalPrice.invalid && totalPrice.touched" [class.is-valid]="totalPrice.valid">
+            </mat-form-field>
+            <br>
+
+            <div>
+                <button mat-raised-button  matStepperPrevious>Back</button>
+                <button mat-raised-button  matStepperNext>Next</button>
+               </div>
+        </form>
+        <!-- code -->
+        
+    </mat-step>
+    <mat-step label="Done">
+        <p>{{"Place Shippment"|translate}}</p>
+        
+    </mat-step>
+</mat-horizontal-stepper>

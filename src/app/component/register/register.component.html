@@ -1,0 +1,83 @@
+<form [formGroup]="RegisterationForm" class="form-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title class="colors fs-3">{{"SignUp"|translate}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-md-12">
+            <mat-form-field class="full-width" hideRequiredMarker>
+                <mat-label class="labelcolor fs-6">{{"Name"|translate}}</mat-label>
+              <input formControlName="username" matInput placeholder="Enter Your Name"   [class.is-invalid]="username.invalid && username.touched" [class.is-valid]="username.valid">
+            </mat-form-field>
+            <div *ngIf="!username.valid && username.touched" class="text-danger">
+               
+              <small class="text-danger fs-6 fw-bold"
+              *ngIf="RegisterationForm.get('username')?.hasError('required')">
+              The Name is required.
+             </small>
+             <small class="text-danger fs-6 fw-bold"
+             *ngIf="RegisterationForm.get('username')?.hasError('minlength')">
+             The minimum length for this field is 5 characters.
+            </small>
+           
+          </div>
+          </div>
+
+          
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" hideRequiredMarker>
+                <mat-label class="labelcolor fs-6">{{"Email"|translate}}</mat-label>
+              <input type="email"  formControlName="email" [class.is-invalid]="email.invalid && email.touched" matInput placeholder="Enter Your Email" [class.is-valid]="email.valid">
+            </mat-form-field>
+            <div *ngIf="!email.valid && email.touched" class="text-danger">
+                
+              <small class="text-danger fs-6 fw-bold"
+              *ngIf="RegisterationForm.get('email')?.hasError('required')">
+              The Email is required.
+             </small>
+             <small class="text-danger fs-6 fw-bold"
+             *ngIf="RegisterationForm.get('email')?.hasError('email')">
+             You Must Enter a Vaild Email like dawd1222@g****.com
+            </small>
+          </div>
+          
+        </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+              <mat-form-field class="full-width" hideRequiredMarker>
+                <mat-label class="labelcolor fs-6">{{"Password"|translate}}</mat-label>
+                <input type="password" [class.is-invaild]="password.invalid && password.touched" [class.is-valid]="password.valid" formControlName="password" matInput placeholder="Enter Your password">
+               
+              </mat-form-field>
+             
+            </div>
+            
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <mat-form-field class="full-width" hideRequiredMarker>
+                <mat-label class="labelcolor fs-6">{{"Confirm Password"|translate}}</mat-label>
+                <input type="password"  formControlName="confirmpassword" matInput placeholder="Confirm Your password">
+              </mat-form-field>
+            </div>
+            
+          </div>
+          <div *ngIf="RegisterationForm.errors?.['passwordMismatch'] && (confirmpassword.touched || password.touched)"
+          class="text-danger fs-6 fw-bold">
+          Password and confirm password don't match.
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button (click)="saveForm()"[disabled]="RegisterationForm.invalid" type="submit" mat-raised-button color="white">{{"SignUp"|translate}}</button><a class="nav-link text-white-50 fs-6" routerLink="/login" routerLinkActive="active" >{{"Already have Account? Sign in Now" | translate}}</a>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+
+  <!-- "cross-validation-error-message alert alert-danger  -->
